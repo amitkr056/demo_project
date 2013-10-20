@@ -1,0 +1,8 @@
+<h2>Edit Requirement Specification</h2>
+<%= form_for @requirement_specification, :url => requirement_leader_requirement_management_path(current_user.id) do |form_builder|%>
+	
+	<%= render(:partial => "form", :locals => {:form_builder => form_builder})%>
+
+<br />
+<%= form_builder.submit "Update Specification"%>
+<% end %>

@@ -1,0 +1,11 @@
+<br />
+
+<% unless @projects.nil? %>
+	<p><b><%= "Projects Created are : " %></b></p>
+	<% @projects.each do |project|%>
+		<p><%= project.name %></p>
+	<% end %>
+<% end %>
+<br />
+
+<p><%= button_to "Create Project", (admin? ? new_admin_project_management_path : new_test_leader_project_management_path), :method => :get %></p>

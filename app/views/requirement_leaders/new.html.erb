@@ -1,0 +1,14 @@
+<h1>New Requirement Leader</h1>
+
+<%= form_for @requirement_leader, :action => "create" do |form_builder| %>
+
+	<%= render(:partial => "users/form", :locals => { :form_builder => form_builder}) %>
+
+<br />
+<div class="actions">
+	<%= form_builder.submit "Create Requirement Leader"%>
+</div>
+
+<% end %>
+<br />
+<%= button_to "BACK", admin_user_managements_path(current_user.id), :method => :get %>

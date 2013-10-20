@@ -1,0 +1,28 @@
+<br />
+<h2><%= "User Managements"%></h2>
+<br />
+<b><%= "Users By Role :"%></b>
+<% @users.each do |user|%>
+	<% if tester? %>
+		<p><b><%= "Tester : "%></b><%= user.user_name %></p>
+	<% end %>
+
+	<% if requirement_leader? %>
+		<p><b><%= "Requirement Leader: "%></b><%= user.user_name %></p>
+	<% end %>
+
+	<% if test_leader? %>
+		<p><b><%= "Test Leader : "%></b><%= user.user_name %></p>
+	<% end %>
+
+<% end %>
+
+<br/>
+
+<%= form_tag :action => "create" do %>
+	<%= select_tag :user, options_for_select(ApplicationHelper::USERS) %>
+	<%= submit_tag "Create User"%>
+<% end %>
+<br />
+
+<%= button_to "BACK", dashboard_admin_path(current_user.id), :method => :get%>

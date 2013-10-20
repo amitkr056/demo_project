@@ -1,0 +1,9 @@
+<h2>Create Requirement Specification</h2>
+<%= form_for [@projects, @requirement_specification], :url => (admin? ? admin_requirement_managements_path(current_user.id) : requirement_leader_requirement_managements_path(current_user.id) ) do |form_builder| %>
+
+	<%= render(:partial => "form", :locals => {:form_builder => form_builder})%>
+
+<br />
+<%= form_builder.submit "Create Specification"%>
+
+<% end %>

@@ -1,0 +1,31 @@
+<br />
+<h2><%= "Requirement Managements"%></h2>
+<br />
+
+<% unless @projects.empty? %>
+	<b><%= "Specification created for Projects are :" %></b>
+	<% @projects.each do |project|%>
+		<% project.requirement_specifications.each do |req_spec|%>
+			<% if project.id == req_spec.project_id %>
+				<p><b><%= "Project name : "%></b><%= project.name %></p>
+				<p><b><%= "Test Specification : "%></b><%= req_spec.name %>&nbsp&nbsp
+					<% if requirement_leader? %>
+
+						<%= link_to "Edit Specification", {:controller => controller.controller_name, :action => "edit", :id => req_spec.id}%>&nbsp&nbsp
+
+						<%= link_to "Delete Specification", {:controller => controller.controller_name, :action => "destroy", :id => req_spec.id}, :method => :delete, :confirm => "Are you sure ?"%>
+					<% end %>
+
+					<% if (admin? || requirement_leader?) %>
+						<%= button_to "Add Requirement To Specification", "#", :method => :get %></p>
+					<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<br />
+
+<% if (admin? || requirement_leader?) %>
+	<%= button_to "Create Requirement Specification", {:controller => controller.controller_name, :action => "new"}, :method => :get %>
+<% end %>

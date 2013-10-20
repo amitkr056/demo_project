@@ -1,0 +1,27 @@
+<% if ApplicationHelper::USTRRAILS_CONTROLLERS.include?(controller.controller_name) %>
+<ul id="subNav">
+    <% if admin? %>
+    	<%= link_to "User Management", admin_user_managements_path(current_user.id) %>
+    <% end %>
+    <% if (admin? || test_leader?) %>
+    	<%= link_to "Test Project Management", test_leader? ? test_leader_project_managements_path(current_user.id) : admin_project_managements_path(current_user.id) %>
+     <% end %>
+
+     <% if (admin? || test_leader? || requirement_leader?) %>
+    	   <%= link_to "Requirement Management", admin? ? admin_requirement_managements_path(current_user.id) : ( test_leader? ? test_leader_requirement_managements_path(current_user.id) : requirement_leader_requirement_managements_path(current_user.id) ) %>
+           
+     <% end %>
+
+     <% if (admin? || test_leader? || tester?) %>
+    	<%= link_to "Test Specification", "#" %>
+     <% end %>
+
+     <% if (admin? || test_leader? || tester?) %>
+    	<%= link_to "Test Execution", "#" %>
+     <% end %>
+
+     <% if (admin? || test_leader?) %>
+    	<%= link_to "Test Report", "#" %>
+     <% end %>
+</ul>
+<% end %>

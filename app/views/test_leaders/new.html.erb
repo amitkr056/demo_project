@@ -1,0 +1,14 @@
+<h1>New Test Leader</h1>
+
+<%= form_for @test_leader, :action => "create" do |form_builder| %>
+
+	<%= render(:partial => "users/form", :locals => { :form_builder => form_builder}) %>
+
+<br />
+<div class="actions">
+	<%= form_builder.submit "Create Test Leader"%>
+</div>
+
+<% end %>
+
+<%= link_to "BACK", admin_user_managements_path(current_user.id) %>

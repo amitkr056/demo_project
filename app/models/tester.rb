@@ -1,0 +1,3 @@
+class Tester < User
+  
+end

@@ -1,0 +1,23 @@
+<% if @requirement_specification.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@requirement_specification.errors.count, "error") %> prohibited:</h2>
+  <ul>
+    <% @requirement_specification.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_builder.label :name, "Test Specification name"%><br />
+<%= form_builder.text_field :name%><br />
+<br />
+
+<% if form_builder.object.new_record? %>
+	<%= form_builder.label :project_name, "Select Project"%><br />
+		<%= form_builder.select :project_name, @projects.map {|record| [record.name, record.id] }%>
+<% else %>
+	<%= form_builder.label :project_name, "Project : "%>
+	<%= @requirement_specification.project.name %>
+<% end %>
+<br />
